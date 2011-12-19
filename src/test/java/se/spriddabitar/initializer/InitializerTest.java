@@ -12,7 +12,7 @@ public class InitializerTest
 	@Test
 	public void testsds() throws InstantiationException, IllegalAccessException
 	{	
-		InitializedClassAndValues<SimpleClass> initializedClassAndValues = new Initializer<SimpleClass>().setValues(new SimpleClass());
+		InitializedClassAndValues<SimpleClass> initializedClassAndValues = new Initializer<SimpleClass>().setValues(SimpleClass.class);
 		
 		SimpleClass initialized = initializedClassAndValues.getInitializedClass();
 		Values values = initializedClassAndValues.getValues();
