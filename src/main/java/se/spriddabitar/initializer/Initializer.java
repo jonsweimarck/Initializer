@@ -9,7 +9,10 @@ import java.util.List;
 public class Initializer<T>
 {
 
-	public InitializedClassAndValues<T> setValues(Class<T> beanClazz) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException 
+	public T setValues(Class<T> beanClazz) throws InstantiationException, 
+	IllegalAccessException, 
+	IllegalArgumentException, 
+	InvocationTargetException 
 	{
 		T bean = beanClazz.newInstance();
 		
@@ -21,17 +24,13 @@ public class Initializer<T>
 			invokeSetterOnBean(bean, setter, value);
 		}
 			
-		return new InitializedClassAndValues<T>( bean, getValues());
+		return bean;
 	}
 
 	
 	private Object getParameter(Method setter) {
      	Class<?> parameter = setter.getParameterTypes()[0];
-    	if (parameter.equals(Integer.class))
-    	{
-    		return new Integer(42);
-        }
-    	else return null;
+     	return new ValueFactory<Object>().getValueFor(parameter);
 	}
 
 
@@ -39,12 +38,6 @@ public class Initializer<T>
 		setter.invoke(bean, value);
 	}
 
-
-	private Values getValues()
-	{
-		return new Values();
-	}
-	
 	
     public  List<Method> getSetters(Class<?> clazz) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException 
     {
@@ -67,7 +60,6 @@ public class Initializer<T>
             }
         }
     }
-
 
 
 	private boolean isSetter(Method method) {
