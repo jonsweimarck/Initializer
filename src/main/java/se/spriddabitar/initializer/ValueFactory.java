@@ -3,6 +3,7 @@ package se.spriddabitar.initializer;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ValueFactory {
@@ -36,6 +37,10 @@ public class ValueFactory {
 //		// TODO  
 //	      if(type.equal(XmlGregorianCalendar))
 	      
+	      if(type.equals(List.class))
+	      {
+	    	  
+	      }
 	      
 	      return new Initializer().setValues(type);
 	      

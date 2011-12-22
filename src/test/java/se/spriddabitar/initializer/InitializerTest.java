@@ -6,15 +6,16 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.junit.Test;
 
-import se.spriddabitar.initializer.testclasses.SubClass;
+import se.spriddabitar.initializer.testclasses.SimpleClass;
 import se.spriddabitar.initializer.testclasses.SuperClass;
+import se.spriddabitar.initializer.testclasses.WithSimpleList;
 
 public class InitializerTest 
 {	
 	@Test
 	public void simpleClassWithFinalTypes() throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException
 	{	
-		SubClass initialized = new Initializer().setValues(SubClass.class);	
+		SimpleClass initialized = new Initializer().setValues(SimpleClass.class);	
 		
 		assertEquals(new Integer(1), initialized.getInteger1());
 		assertEquals(new Integer(1), initialized.getInteger2());
@@ -31,6 +32,13 @@ public class InitializerTest
 		assertEquals(new Integer(1), initialized.getSubclass().getInteger1());
 	}
 	
-//	@Test
-//	public void class
+	@Test
+	public void withSimpleList() throws IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException
+	{
+		WithSimpleList initialized = new Initializer().setValues(WithSimpleList.class);	
+		
+		assertEquals(new Integer(1), initialized.getInteger1());
+
+		assertEquals(1, initialized.getSimples().size());
+	}
 }

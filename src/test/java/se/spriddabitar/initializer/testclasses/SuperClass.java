@@ -1,7 +1,7 @@
 package se.spriddabitar.initializer.testclasses;
 
 public class SuperClass {
-	private SubClass subclass;
+	private SimpleClass subclass;
 	private Integer integer1;
 
 
@@ -14,11 +14,11 @@ public class SuperClass {
 		this.integer1 = integer1;
 	}
 
-	public SubClass getSubclass() {
+	public SimpleClass getSubclass() {
 		return subclass;
 	}
 
-	public void setSubclass(SubClass subclass) {
+	public void setSubclass(SimpleClass subclass) {
 		this.subclass = subclass;
 	}
 	
