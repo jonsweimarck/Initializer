@@ -5,21 +5,20 @@ import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ValueFactory<T> {
+public class ValueFactory {
 
-	   private static final int A_NUMBER = 42;
-	   private static final int HALF_A_NUMBER = 21;
+	   private static final int A_NUMBER = 1;
 	 
 	   private Map<Class<?>, Object> typeValues;
 	 
 	   public ValueFactory() 
 	   {
 	      typeValues = new HashMap<Class<?>, Object>();
-	      typeValues.put(String.class, "test");
+	      typeValues.put(String.class, String.valueOf(A_NUMBER));
 	      typeValues.put(Long.class, new Long(A_NUMBER));
 	      typeValues.put(Long.TYPE, new Long(A_NUMBER));
-	      typeValues.put(Integer.class, Integer.valueOf(HALF_A_NUMBER));
-	      typeValues.put(Integer.TYPE, Integer.valueOf(HALF_A_NUMBER));
+	      typeValues.put(Integer.class, Integer.valueOf(A_NUMBER));
+	      typeValues.put(Integer.TYPE, Integer.valueOf(A_NUMBER));
 	      typeValues.put(Boolean.class, Boolean.TRUE);
 	      typeValues.put(Boolean.TYPE, Boolean.TRUE);
 	      typeValues.put(Long[].class, new Long[0]);
@@ -28,7 +27,7 @@ public class ValueFactory<T> {
 	      typeValues.put(Boolean[].class, new Boolean[0]);
 	   }
 	 
-	   public Object getValueFor(Class<T> type) throws IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException 
+	   public Object getValueFor(Class<?> type) throws IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException 
 	   {
 	      if(Modifier.isFinal(type.getModifiers())) 
 	      {
@@ -38,7 +37,7 @@ public class ValueFactory<T> {
 //	      if(type.equal(XmlGregorianCalendar))
 	      
 	      
-	      return new Initializer<T>().setValues(type);
+	      return new Initializer().setValues(type);
 	      
 	      
 	   }

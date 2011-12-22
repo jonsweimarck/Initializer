@@ -1,6 +1,6 @@
 package se.spriddabitar.initializer.testclasses;
 
-public class SimpleClass {
+public class SubClass {
 	private Integer integer1;
 	private Integer integer2;
 	private String string1;

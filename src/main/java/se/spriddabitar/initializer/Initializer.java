@@ -6,10 +6,10 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Initializer<T>
+public class Initializer
 {
 
-	public T setValues(Class<T> beanClazz) throws InstantiationException, 
+	public  <T> T setValues(Class<T> beanClazz) throws InstantiationException, 
 	IllegalAccessException, 
 	IllegalArgumentException, 
 	InvocationTargetException 
@@ -28,13 +28,13 @@ public class Initializer<T>
 	}
 
 	
-	private Object getParameter(Method setter) {
+	private Object getParameter(Method setter) throws IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException {
      	Class<?> parameter = setter.getParameterTypes()[0];
-     	return new ValueFactory<Object>().getValueFor(parameter);
+     	return new ValueFactory().getValueFor(parameter);
 	}
 
 
-	private void invokeSetterOnBean(T bean, Method setter, Object value) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
+	private <T> void invokeSetterOnBean(T bean, Method setter, Object value) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException {
 		setter.invoke(bean, value);
 	}
 
