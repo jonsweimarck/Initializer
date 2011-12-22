@@ -1,7 +1,9 @@
 package se.spriddabitar.initializer;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.ParameterizedType;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,21 +30,28 @@ public class ValueFactory {
 	      typeValues.put(Boolean[].class, new Boolean[0]);
 	   }
 	 
-	   public Object getValueFor(Class<?> type) throws IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException 
+	   public Object getValueFor(Class<?> clazz) throws IllegalArgumentException, InstantiationException, IllegalAccessException, InvocationTargetException, SecurityException, NoSuchFieldException, ClassNotFoundException 
 	   {
-	      if(Modifier.isFinal(type.getModifiers())) 
+	      if(Modifier.isFinal(clazz.getModifiers())) 
 	      {
-	         return typeValues.get(type);
+	         return typeValues.get(clazz);
 	      }
 //		// TODO  
 //	      if(type.equal(XmlGregorianCalendar))
 	      
-	      if(type.equals(List.class))
-	      {
-	    	  
-	      }
+
 	      
-	      return new Initializer().setValues(type);
+	      
+//	      if(clazz.equals(List.class))
+//	      {
+//	    	  
+//	    	  Object list = clazz.newInstance();
+//	    	  Method add = List.class.getDeclaredMethod("add",Object.class);
+//	    	  add.invoke(list, addToAddToList);
+//
+//	      }
+	      
+	      return new Initializer().setValues(clazz);
 	      
 	      
 	   }
