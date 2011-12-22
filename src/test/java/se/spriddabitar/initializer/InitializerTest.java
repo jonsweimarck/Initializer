@@ -31,6 +31,6 @@ public class InitializerTest
 		assertEquals(new Integer(1), initialized.getSubclass().getInteger1());
 	}
 	
-	@Test
-	public void class
+//	@Test
+//	public void class
 }
