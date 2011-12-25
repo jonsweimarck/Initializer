@@ -12,10 +12,14 @@ import java.util.List;
 public class Initializer
 {
 
-	public  <T> T setValues(Class<T> beanClazz) throws InstantiationException, 
+	public  <T> T setValues(Class<T> beanClazz) 
+	throws InstantiationException, 
 	IllegalAccessException, 
 	IllegalArgumentException, 
-	InvocationTargetException, SecurityException, NoSuchFieldException, ClassNotFoundException 
+	InvocationTargetException, 
+	SecurityException, 
+	NoSuchFieldException, 
+	ClassNotFoundException 
 	{
 		T bean = beanClazz.newInstance();
 		

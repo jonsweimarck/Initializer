@@ -13,7 +13,7 @@ import se.spriddabitar.initializer.testclasses.WithSimpleList;
 public class InitializerTest 
 {	
 	@Test
-	public void simpleClassWithFinalTypes() throws Exception
+	public void withFinalTypes() throws Exception
 	{	
 		SimpleClass initialized = new Initializer().setValues(SimpleClass.class);	
 		
@@ -23,7 +23,7 @@ public class InitializerTest
 	}
 	
 	@Test
-	public void classWithSubclassWithFinalTypes() throws Exception
+	public void withInheritance() throws Exception
 	{	
 		SuperClass initialized = new Initializer().setValues(SuperClass.class);	
 		
